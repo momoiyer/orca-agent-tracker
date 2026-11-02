@@ -34,6 +34,19 @@ python3 scripts/desk_service.py --install
 
 The service installer captures the configured overrides. `CODEX_HOME` and `CLAUDE_CONFIG_DIR` select client homes. `AGENT_DESK_STATE` overrides private state storage. `AGENT_DESK_PROJECT_ROOTS` supplies project parent directories separated by the OS path separator (`:` on macOS/Linux). Defaults check immediate Git directories under `~/orca/projects`, `~/Projects`, and `~/Developer`; no whole-disk scan runs.
 
+## 3D workspace
+
+The default activity view groups observed sessions onto project islands, with selectable
+3D agent figures. Drag the scene to orbit, use the zoom buttons, or focus the scene
+and use arrow keys and + / −. Reset view restores the starting camera. Select a figure
+to inspect its assignment, source, last observation, and parent identity. Filters apply
+to both the scene and session list; switch to Session list for a text view. Historical
+and ended sessions remain below the scene rather than appearing as current agents.
+
+The scene uses browser-native CSS 3D transforms with no downloaded assets or libraries.
+Status colors represent reported observations; unknown and stale sessions are never
+presented as confirmed activity.
+
 ## What the view establishes
 
 The browser refreshes about every five seconds. Orca and Claude CLI adapters supply live reports; lifecycle hooks observe starts, tools, approval waits, stops, and subagents. Recent Codex history is explicitly historical. Unavailable sources, missing roles, stale observations, and unsupported schemas do not become invented activity. Sessions without a working integration may not be observable. A completed turn in an attached CLI is idle, not a terminated process.
@@ -72,4 +85,4 @@ node --check dashboard/app.js
 python3 scripts/tracking.py --check
 ```
 
-Tests use disposable synthetic data. See [HANDOFF.md](HANDOFF.md) for architecture, migration checks, and a focused starting point for the next chat. Work on personal rules, skills, and agent setup belongs in the separate `ai-config` repository. No changes here commit, push, or publish a GitHub repository automatically.
+Tests use disposable synthetic data. The optional workspace browser regression runs installed Chrome/Chromium against a synthetic local server at desktop and narrow viewport sizes; it skips when no browser is found. Set `TRACKER_TEST_CHROME` to choose a browser executable. See [HANDOFF.md](HANDOFF.md) for architecture, migration checks, and a focused starting point for the next chat. Work on personal rules, skills, and agent setup belongs in the separate `ai-config` repository. No changes here commit, push, or publish a GitHub repository automatically.
