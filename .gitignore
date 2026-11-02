@@ -11,3 +11,9 @@ __pycache__/
 !.env.example
 node_modules/
 artifacts/
+
+# Secret configuration filenames, including alternate suffixes
+.env*
+.envrc
+*.env
+*.env.*
