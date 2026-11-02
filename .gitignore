@@ -1,0 +1,13 @@
+__pycache__/
+.DS_Store
+
+# Machine-private activity and generated artifacts
+.local/
+.runtime/
+*.sqlite*
+*.db*
+*.log
+.env*
+!.env.example
+node_modules/
+artifacts/
